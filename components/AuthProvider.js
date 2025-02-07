@@ -57,10 +57,11 @@ export function AuthProvider({ children }) {
       });
 
       if (error) {
-        throw error;
+        // Throw a more descriptive and user-friendly error
+        throw new Error('Incorrect email or password');
       }
     } catch (error) {
-      console.error('Error signing in:', error.message);
+      console.error('Login error:', error.message);
       throw error;
     } finally {
       setLoading(false);
