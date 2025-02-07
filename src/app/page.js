@@ -1,100 +1,123 @@
-import Image from "next/image";
+import React from 'react';
+import Link from 'next/link';
+import { 
+  SparklesIcon, 
+  ClockIcon, 
+  TrophyIcon 
+} from '@heroicons/react/24/solid';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const transformationSteps = [
+    {
+      icon: <SparklesIcon className="w-16 h-16 text-purple-600" />,
+      title: 'Discover Your Potential',
+      description: 'Identify the habits that will unlock your true capabilities.'
+    },
+    {
+      icon: <ClockIcon className="w-16 h-16 text-purple-600" />,
+      title: 'Build Consistency',
+      description: 'Create a sustainable path to personal growth through daily practice.'
+    },
+    {
+      icon: <TrophyIcon className="w-16 h-16 text-purple-600" />,
+      title: 'Achieve Greatness',
+      description: 'Transform your life by mastering the habits that matter most.'
+    }
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <div className="bg-white min-h-screen flex flex-col">
+      {/* Navigation */}
+      <nav className="container mx-auto px-4 py-6 flex justify-between items-center">
+        <Link href="/" className="text-2xl font-bold text-black">
+          HabitForge
+        </Link>
+        <div className="space-x-4 flex items-center">
+          <Link 
+            href="/login" 
+            className="text-black hover:text-purple-600 transition-colors font-medium mr-4"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Login
+          </Link>
+          <Link 
+            href="/signup" 
+            className="bg-black text-purple-500 px-6 py-2 rounded-md text-md font-semibold hover:bg-purple-600 hover:text-black transition-colors"
           >
-            Read our docs
-          </a>
+            Get Started
+          </Link>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <main className="container mx-auto px-4 flex-grow flex flex-col justify-center items-center text-center">
+        <div className="max-w-4xl px-4">
+          <h1 className="text-5xl md:text-6xl font-bold text-black mb-6 leading-tight">
+            Your Journey to <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-black">
+              Personal Transformation
+            </span>
+          </h1>
+          <p className="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
+            HabitForge is more than an app. It's your personal guide to building life-changing habits, 
+            one day at a time.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-16">
+            <Link 
+              href="/signup" 
+              className="bg-black text-purple-500 px-8 py-4 rounded-md text-lg font-semibold hover:bg-purple-600 hover:text-black transition-colors shadow-lg"
+            >
+              Start Your Transformation
+            </Link>
+            <Link 
+              href="/learn" 
+              className="bg-white text-black px-8 py-4 rounded-md text-lg font-semibold hover:bg-gray-100 transition-colors border border-black"
+            >
+              How It Works
+            </Link>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Transformation Journey Section */}
+      <section className="container mx-auto px-4 py-16 bg-gray-50">
+        <div className="text-center mb-12 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+            Your Path to Success
+          </h2>
+          <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
+            Transform your life through a proven, step-by-step approach to habit formation.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
+          {transformationSteps.map((step, index) => (
+            <div 
+              key={index} 
+              className="bg-white p-6 md:p-8 text-center rounded-lg shadow-md hover:shadow-lg transition-all border border-purple-100"
+            >
+              <div className="flex justify-center mb-6">
+                {step.icon}
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-4">
+                {step.title}
+              </h3>
+              <p className="text-gray-700 mb-4">
+                {step.description}
+              </p>
+              <div className="mt-4 pt-4 border-t border-purple-100 text-sm text-gray-500">
+                Step {index + 1}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-white py-6 border-t border-gray-100">
+        <div className="container mx-auto px-4 text-center text-gray-700">
+          2024 HabitForge. Empowering Personal Growth.
+        </div>
       </footer>
     </div>
   );
