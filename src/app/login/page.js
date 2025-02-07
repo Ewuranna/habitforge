@@ -69,26 +69,29 @@ export default function LoginPage() {
       // Routing to dashboard is now handled in AuthProvider
     } // In handleSubmit catch block - Improve error handling
     catch (err) {
-      const errorCode = err.code; // Use error codes instead of message text
-      const newErrors = { email: '', password: '', general: '' };
-    
-      switch (errorCode) {
-        case 'auth/wrong-password':
-          newErrors.general = "Incorrect password. Please try again.";
-          break;
-        case 'auth/user-not-found':
-          newErrors.general = "No account found. Please sign up.";
-          break;
-        case 'auth/too-many-requests':
-          newErrors.general = "Too many attempts. Try again later or reset password.";
-          break;
-        default:
-          newErrors.general = 'Login failed. Please try again.';
+        let errorMessage = '';
+        
+        // Handle Supabase error codes
+        switch (err.code) {
+          case 'invalid_credentials':
+            errorMessage = "Incorrect email or password";
+            break;
+          case 'email_not_confirmed':
+            errorMessage = "Please verify your email first";
+            break;
+          case 'user_not_found':
+            errorMessage = "No account found. Please sign up";
+            break;
+          default:
+            errorMessage = err.message || 'Login failed. Please try again';
+        }
+      
+        setErrors({
+          email: '',
+          password: '',
+          general: errorMessage
+        });
       }
-    
-      setErrors(newErrors);
-    }
-    
 
     setIsLoading(false);
   };
@@ -155,6 +158,14 @@ export default function LoginPage() {
                   {errors.email}
                 </div>
               )}
+              {errors.general && (
+  <div className="mb-4 bg-red-50 border border-red-300 text-red-700 px-4 py-3 rounded relative flex items-center animate-fade-in">
+    <ExclamationCircleIcon className="h-6 w-6 mr-3 flex-shrink-0" />
+   
+      <span className="block sm:inline">{errors.general}</span>
+    
+  </div>
+)}
             </div>
             <div className="relative">
               <label htmlFor="password" className="sr-only">

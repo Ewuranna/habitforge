@@ -51,18 +51,22 @@ export function AuthProvider({ children }) {
   const signIn = async (email, password) => {
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password
       });
-
+  
       if (error) {
-        // Throw a more descriptive and user-friendly error
-        throw new Error('Incorrect email or password');
+        // Pass through the original error with code
+        throw { 
+          code: error.code || 'auth/error',
+          message: error.message 
+        };
       }
+      return data;
     } catch (error) {
-      console.error('Login error:', error.message);
-      throw error;
+      console.error('Login error:', error);
+      throw error; // Throw the complete error object
     } finally {
       setLoading(false);
     }
