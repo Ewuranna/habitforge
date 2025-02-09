@@ -10,6 +10,10 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-poppins)', 'ui-sans-serif', 'system-ui'],
       },
+      colors: {
+        'forge-blue': '#eaf2f6',
+        'darkforge': '#78AEC5',
+      },
     },
   },
   plugins: [],

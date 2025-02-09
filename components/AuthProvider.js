@@ -51,22 +51,17 @@ export function AuthProvider({ children }) {
   const signIn = async (email, password) => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password
       });
-  
+
       if (error) {
-        // Pass through the original error with code
-        throw { 
-          code: error.code || 'auth/error',
-          message: error.message 
-        };
+        throw error;
       }
-      return data;
     } catch (error) {
-      console.error('Login error:', error);
-      throw error; // Throw the complete error object
+      console.error('Error signing in:', error.message);
+      throw error;
     } finally {
       setLoading(false);
     }

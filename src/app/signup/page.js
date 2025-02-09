@@ -1,27 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function SignupPage() {
   return (
-    <div className="min-h-screen bg-[#EAF2F6] font-[--font-poppins] flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-white font-[--font-poppins] flex items-center justify-center px-4 py-12">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <div className="flex justify-center mb-6">
-            <Image 
-              src="/Habitforgelogo.png"  
-              alt="HabitForge Logo" 
-              width={128} 
-              height={128} 
-              className="object-contain"
-            />
-          </div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-[#2C3E50]">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Create Your HabitForge Account
           </h2>
-          <p className="mt-2 text-center text-sm text-[#2C3E50] opacity-80">
+          <p className="mt-2 text-center text-sm text-gray-600">
             Already have an account?{' '}
-            <Link href="/login" className="font-medium text-[#3498DB] hover:text-[#2980B9]">
+            <Link href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
               Sign in
             </Link>
           </p>
@@ -35,7 +25,7 @@ export default function SignupPage() {
                 name="name"
                 type="text"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-[#2C3E50] rounded-t-md focus:outline-none focus:ring-[#3498DB] focus:border-[#3498DB] focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Full Name"
               />
             </div>
@@ -47,7 +37,7 @@ export default function SignupPage() {
                 type="email"
                 autoComplete="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-[#2C3E50] focus:outline-none focus:ring-[#3498DB] focus:border-[#3498DB] focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
               />
             </div>
@@ -59,7 +49,7 @@ export default function SignupPage() {
                 type="password"
                 autoComplete="new-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-[#2C3E50] focus:outline-none focus:ring-[#3498DB] focus:border-[#3498DB] focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
               />
             </div>
@@ -71,7 +61,7 @@ export default function SignupPage() {
                 type="password"
                 autoComplete="new-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-[#2C3E50] rounded-b-md focus:outline-none focus:ring-[#3498DB] focus:border-[#3498DB] focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Confirm Password"
               />
             </div>
@@ -80,7 +70,7 @@ export default function SignupPage() {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#3498DB] hover:bg-[#2980B9] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3498DB]"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Create Account
             </button>

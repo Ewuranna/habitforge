@@ -5,7 +5,7 @@ import { AuthProvider } from '../../components/AuthProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 const poppins = Poppins({ 
-  weight: ['400', '500', '600', '700', '800'], 
+  weight: ['300', '400', '500'], 
   subsets: ['latin'],
   variable: '--font-poppins',
   display: 'swap'
@@ -14,15 +14,6 @@ const poppins = Poppins({
 export const metadata = {
   title: "HabitForge - Transform Your Life",
   description: "Build better habits, track your progress, and achieve personal growth.",
-  icons: {
-    icon: [
-      { url: '/Habitforgelogo.png', sizes: '32x32', type: 'image/png' },
-      { url: '/Habitforgelogo.png', sizes: '16x16', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/Habitforgelogo.png', sizes: '180x180' }
-    ],
-  },
 };
 
 export default function RootLayout({ children }) {
