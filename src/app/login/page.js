@@ -32,7 +32,16 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-forge-blue py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 ">
         <div>
-          <Image src="/Habitforgelogo.png" width={120} height={120} alt="Habitforge Logo" object-position="center" className="mx-auto"/>
+          <Link href="/" className="block text-center">
+            <Image 
+              src="/Habitforgelogo.png" 
+              width={120} 
+              height={120} 
+              alt="Habitforge Logo" 
+              object-position="center" 
+              className="mx-auto"
+            />
+          </Link>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign in to your account
           </h2>

@@ -35,31 +35,40 @@ export default async function Home() {
 
   return (
     <div className="bg-forge-blue min-h-screen flex flex-col ">
-      {/* Navigation */}
-      <nav className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href="/">
-        <Image src="/Habitforgelogo.png" width={120} height={120} alt="Habitforge Logo"  />
+      {/* Custom Navigation */}
+      <nav className="w-full bg-forge-blue backdrop-blur-md shadow-sm py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+        <Link href="/" className="flex items-center space-x-3">
+          <Image 
+            src="/Habitforgelogo.png" 
+            width={50} 
+            height={50} 
+            alt="Habitforge Logo"  
+            className="object-contain rounded-lg"
+          />
+          <span className="text-xl font-bold text-black tracking-tight">HabitForge</span>
         </Link>
-        <div className="space-x-4 flex items-center">
+        <div className="flex items-center space-x-6">
           <Link 
             href="/login" 
-            className="text-black hover:text-darkforge-600 transition-colors font-medium mr-4"
+            className="text-gray-700 hover:text-black transition-colors font-medium text-sm group flex items-center"
           >
-            Login
+            <span className="group-hover:underline">Login</span>
           </Link>
 
           <Link 
             href="/signup" 
-            className="bg-black text-white px-6 py-2 rounded-md text-md font-semibold hover:bg-darkforge hover:text-black transition-colors"
+            className="bg-black text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors flex items-center space-x-2"
           >
-            Get Started
+            <span>Get Started</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
           </Link>
         </div>
       </nav>
-
       {/* Hero Section */}
       <main className="container mx-auto px-4 flex-grow flex flex-col justify-center items-center text-center">
-        <div className="max-w-4xl px-4">
+        <div className="max-w-4xl px-4 pt-8">
           <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
             Your Journey to <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-darkforge to-black">

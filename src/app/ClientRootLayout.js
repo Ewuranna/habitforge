@@ -18,7 +18,7 @@ export default function ClientRootLayout({ children }) {
   const pathname = usePathname();
 
   // Routes where navigation should not be shown
-  const noNavRoutes = ['/login', '/signup', '/reset-password', '/home'];
+  const noNavRoutes = ['/login', '/signup', '/reset-password', '/'];
 
   return (
     <html lang="en">
