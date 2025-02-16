@@ -1,3 +1,8 @@
+'use server';
+
+import { createClient } from '@/lib/supabase-server'
+import { cookies } from 'next/headers'
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -7,7 +12,9 @@ import {
   TrophyIcon 
 } from '@heroicons/react/24/solid';
 
-export default function Home() {
+export default async function Home() {
+  const cookieStore = cookies()
+  const supabase = createClient(cookieStore)
   const transformationSteps = [
     {
       icon: <SparklesIcon className="w-16 h-16 text-darkforge" />,

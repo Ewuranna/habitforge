@@ -19,6 +19,9 @@ export default function SignupPage() {
     setError(null);
 
     try {
+      // Generate a username from name (remove spaces, lowercase)
+      const username = name.toLowerCase().replace(/\s+/g, '_');
+
       // Sign up the user with Supabase Auth
       const { data, error } = await supabase.auth.signUp({
         email,
@@ -26,8 +29,18 @@ export default function SignupPage() {
         options: {
           data: {
             full_name: name,
+            username: username
           }
         }
+      });
+
+      // Extensive logging of signup process
+      console.log('Signup Response:', {
+        user: data.user ? {
+          id: data.user.id,
+          email: data.user.email
+        } : null,
+        error: error
       });
 
       if (error) {
@@ -37,24 +50,47 @@ export default function SignupPage() {
 
       // If signup is successful and user is confirmed, redirect to dashboard
       if (data.user) {
-        // Optional: Insert additional user details into a 'profiles' table
-        const { error: profileError } = await supabase
+        console.log('Attempting to create profile for user:', {
+          userId: data.user.id,
+          username: username,
+          name: name
+        });
+
+        // Upsert profile with username
+        const { data: profileData, error: profileError } = await supabase
           .from('profiles')
           .upsert({
             id: data.user.id,
-            full_name: name,
-            email: email
+            username: username,
+            leaderboard_nickname: name
+          }, {
+            onConflict: 'id',
+            returning: 'representation'  // Ensure we get back the inserted/updated data
           });
 
+        console.log('Profile Upsert Result:', {
+          profileData,
+          profileError
+        });
+
         if (profileError) {
-          console.error('Error creating profile:', profileError);
+          console.error('Profile Creation Error:', {
+            message: profileError.message,
+            details: profileError.details
+          });
+          setError('Could not complete profile setup');
+          return;
         }
 
         router.push('/dashboard');
       }
     } catch (err) {
+      console.error('Signup Catch Block Error:', {
+        message: err.message,
+        name: err.name,
+        stack: err.stack
+      });
       setError('An unexpected error occurred');
-      console.error(err);
     }
   };
 

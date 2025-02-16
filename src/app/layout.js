@@ -1,15 +1,6 @@
-import { Inter } from 'next/font/google';
-import { Poppins } from 'next/font/google'
-import "./globals.css";
-import { AuthProvider } from '../../components/AuthProvider'
+import ClientRootLayout from './ClientRootLayout';
 
-const inter = Inter({ subsets: ['latin'] })
-const poppins = Poppins({ 
-  weight: ['300', '400', '500'], 
-  subsets: ['latin'],
-  variable: '--font-poppins',
-  display: 'swap'
-})
+
 
 export const metadata = {
   title: "HabitForge - Transform Your Life",
@@ -18,12 +9,6 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${poppins.variable}`}>
-      <body className={`${poppins.className} font-sans`}>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
-      </body>
-    </html>
+    <ClientRootLayout>{children}</ClientRootLayout>
   );
 }

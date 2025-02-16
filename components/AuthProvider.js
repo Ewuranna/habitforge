@@ -51,16 +51,34 @@ export function AuthProvider({ children }) {
   const signIn = async (email, password) => {
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password
+      });
+
+      // Detailed logging of login attempt
+      console.log('Login Attempt Details:', {
+        success: !error,
+        sessionCreated: !!data.session,
+        userEmail: data.session?.user?.email,
+        sessionId: data.session?.access_token ? 'Present' : 'Missing'
       });
 
       if (error) {
         throw error;
       }
+
+      // Verify session is created
+      if (!data.session) {
+        throw new Error('No session created after login');
+      }
+
+      return data;
     } catch (error) {
-      console.error('Error signing in:', error.message);
+      console.error('Login Error:', {
+        message: error.message,
+        name: error.name
+      });
       throw error;
     } finally {
       setLoading(false);
